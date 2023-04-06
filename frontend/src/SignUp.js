@@ -3,6 +3,7 @@ import { Link ,useNavigate} from 'react-router-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import './Signup.css'
 const SignUp =(props)=>{
     const navigate=useNavigate()
     const [input,setInput]=useState({
