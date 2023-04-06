@@ -2,6 +2,7 @@ import React,{useState} from 'react'
 import { Link,useNavigate,NavLink } from 'react-router-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
+import './Login.css'
 const Login =()=>{
     const navigate = useNavigate();
     const [data, setData] = useState({
