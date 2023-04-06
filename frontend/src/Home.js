@@ -1,5 +1,7 @@
 import React from 'react'
 import { useNavigate } from 'react-router-dom'
+import Navbar from './Navbar'
+import './navbar.css'
 
 const Home = () => {
   const navigate=useNavigate()
@@ -22,8 +24,8 @@ if(user){
   return (
     // <div>home file hi hai!!!</div>
     <div>
-      <button onClick={()=>{navigate('/signup')}}>SignUp</button>
-      <button onClick={()=>{navigate('/login')}}>Login</button>
+      <Navbar/>
+      
 
     </div>
   )
