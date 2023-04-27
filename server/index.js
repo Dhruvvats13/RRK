@@ -2,6 +2,8 @@ const express=require('express')
 const mongoose=require('mongoose')
 const bcrypt =require('bcrypt')
 const app=express()
+const Order = require('./models/Order')
+// const stripe = require('stripe')('YOUR_STRIPE_SECRET_KEY');
 const cors=require('cors')
 app.use(cors())
 // const jwt  =require('jwt')
@@ -93,14 +95,8 @@ app.post('/login', async(req,res)=>{
 app.post("/forgot-password", async (req, res) => {
     const { email } = req.body;
   
-    // TODO: Validate email address
-  
-    // Generate a password reset token (e.g. using JWT)
-  
-    // Send the password reset email
     try {
       const transporter = nodemailer.createTransport({
-        // Replace with your SMTP server settings
         host: "smtp.example.com",
         port: 587,
         secure: false,
@@ -132,22 +128,71 @@ app.post("/forgot-password", async (req, res) => {
       res.status(500).json({ message: "An error occurred. Please try again later." });
     }
   });
-// app.post('/payment', async (req, res) => {
-//     try {
-//       const { amount, token } = req.body;
-//       const charge = await stripe.charges.create({
-//         amount: amount,
-//         currency: 'USD',
-//         description: 'Payment for Product',
-//         source: token.id,
-//       });
-//       res.status(200).json({ success: true, charge });
-//     } catch (err) {
-//       console.error(err);
-//       res.status(500).json({ success: false, error: err });
-//     }
-//   });
+  // app.post('/payment', async (req, res) => {
+  //   try {
+  //     const { amount, token } = req.body;
+  //     const charge = await stripe.charges.create({
+  //       amount: amount,
+  //       currency: 'USD',
+  //       description: 'Payment for Product',
+  //       source: token.id,
+  //     });
+  //     res.status(200).json({ success: true, charge });
+  //   } catch (err) {
+  //     console.error(err);
+  //     res.status(500).json({ success: false, error: err });
+  //   }
+  // });
+
+app.post('/orderData', async (req, res) => {
+    let data = req.body.order_data
+    await data.splice(0,0,{Order_date:req.body.order_date})
+    console.log("1231242343242354",req.body.email)
+    let eId = await Order.findOne({ 'email': req.body.email })    
+    console.log(eId)
+    if (eId===null) {
+        try {
+            console.log(data)
+            console.log("1231242343242354",req.body.email)
+            await Order.create({
+                email: req.body.email,
+                order_data:[data]
+            }).then(() => {
+                res.json({ success: true })
+            })
+        } catch (error) {
+            console.log(error.message)
+            res.send("Server Error", error.message)
+
+        }
+    }
+
+    else {
+        try {
+            await Order.findOneAndUpdate({email:req.body.email},
+                { $push:{order_data: data} }).then(() => {
+                    res.json({ success: true })
+                })
+        } catch (error) {
+            console.log(error.message)
+            res.send("Server Error", error.message)
+        }
+    }
+})
+
+app.post('/myOrderData', async (req, res) => {
+    try {
+        console.log(req.body.email)
+        let eId = await Order.findOne({ 'email': req.body.email })
+        //console.log(eId)
+        res.json({orderData:eId})
+    } catch (error) {
+        res.send("Error",error.message)
+    }
+    
+
+});
 app.listen(3001,()=>{
-    console.log('server running on port no 3000')
+    console.log('server running on port no 3001')
 
 })
