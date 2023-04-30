@@ -1,3 +1,4 @@
+
 const express=require('express')
 const mongoose=require('mongoose')
 const bcrypt =require('bcrypt')
@@ -14,10 +15,18 @@ const User=require('./models/users')
 const generateAuthToken = require('./jwToken')
 // const jwt=require('jwt')
 
-mongoose.set('strictQuery' , true)
-mongoose.connect('mongodb://127.0.0.1:27017/sam').then((res)=>{
-    console.log('data base connected')
 
+mongoose.set('strictQuery' , true)
+mongoose.connect('mongodb://127.0.0.1:27017/sam').then(async(res)=>{
+    console.log('data base connected')
+    const foodCollection = await mongoose.connection.db.collection("food_items");
+    foodCollection.find({}).toArray(async function (err, data) {
+        const categoryCollection = await mongoose.connection.db.collection("Categories");
+        categoryCollection.find({}).toArray(async function (err, Catdata) {
+            res(err, data, Catdata);
+
+        })
+    }) 
 }).catch((err)=>{
     console.log(err,"errrr")
 
@@ -144,6 +153,34 @@ app.post("/forgot-password", async (req, res) => {
   //   }
   // });
 
+ 
+
+  app.post('/foodData', async (req, res) => {
+    try {
+        if (!req.user || !req.user.id) {
+            return res.status(401).send({ error: "Unauthorized" });
+          }
+      const userId = req.user.id;
+      const foodDataCollection = await database.collection('food_items').find({ user_id: userId }).toArray();
+      const foodData = foodDataCollection.map((data) => ({
+        ...data,
+        id: data._id.toString(),
+        category_id: data.category_id.toString()
+      }));
+      const foodCategoryCollection = await database.collection('food_categories').find().toArray();
+      const foodCategory = foodCategoryCollection.map((data) => ({
+        ...data,
+        id: data._id.toString()
+      }));
+      res.send([foodData, foodCategory])
+    } catch (error) {
+        console.error(error.message)
+        res.status(500).send({ error: "Server Error" }) 
+      }
+  });
+  
+  
+  
 app.post('/orderData', async (req, res) => {
     let data = req.body.order_data
     await data.splice(0,0,{Order_date:req.body.order_date})
@@ -162,7 +199,7 @@ app.post('/orderData', async (req, res) => {
             })
         } catch (error) {
             console.log(error.message)
-            res.send("Server Error", error.message)
+            res.status(statusCode).send(message)
 
         }
     }
@@ -180,7 +217,7 @@ app.post('/orderData', async (req, res) => {
     }
 })
 
-app.post('/myOrderData', async (req, res) => {
+app.post('/myOrder', async (req, res) => {
     try {
         console.log(req.body.email)
         let eId = await Order.findOne({ 'email': req.body.email })
@@ -192,6 +229,7 @@ app.post('/myOrderData', async (req, res) => {
     
 
 });
+
 app.listen(3001,()=>{
     console.log('server running on port no 3001')
 
