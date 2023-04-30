@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react'
 import Card from './Card'
-// import Carousel from '../components/Carousel'
 import Footer from './Footer'
 import Navbar from './component/Navbar'
 export default function Home() {
@@ -8,21 +7,20 @@ export default function Home() {
   const [foodItems, setFoodItems] = useState([])
   const [search, setSearch] = useState('')
   const loadFoodItems = async () => {
-    let response = await fetch("http://localhost:3001/foodData", {
-      // credentials: 'include',
-      // Origin:"http://localhost:3000/login",
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      }
-
-    });
-    response = await response.json()
-    // console.log(response[1][0].CategoryName)
-    setFoodItems(response[0])
-    setFoodCat(response[1])
+    try {
+      let response = await fetch("http://localhost:3001/foodData", {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      });
+      response = await response.json()
+      setFoodItems(response[0]);
+      setFoodCat(response[1]);
+    } catch (error) {
+      console.error(error)
+    }
   }
-
   useEffect(() => {
     loadFoodItems()
   }, [])
@@ -37,10 +35,12 @@ export default function Home() {
 
           <div className="carousel-inner " id='carousel'>
             <div className=" carousel-caption  " style={{ zIndex: "9" }}>
+            <form className="d-flex">
               <div className=" d-flex justify-content-center">  {/* justify-content-center, copy this <form> from navbar for search box */}
                 <input className="form-control me-2 w-75 bg-white text-dark" type="search" placeholder="Search in here..." aria-label="Search" value={search} onChange={(e) => { setSearch(e.target.value) }} />
-                <button className="btn text-white bg-danger" onClick={() => { setSearch('') }}>X</button>
+                <button className="btn text-white bg-peace" onClick={() => { setSearch('') }}>Search</button>
               </div>
+              </form> 
             </div>
             <div className="carousel-item active" >
               <img src="https://source.unsplash.com/random/900x700/?burger" className="d-block w-100  " style={{ filter: "brightness(30%)" }} alt="..." />
@@ -64,7 +64,7 @@ export default function Home() {
       </div>
       <div className='container'> {/* boootstrap is mobile first */}
         {
-          foodCat.length > 0
+          foodCat && foodCat.length > 0
             ? foodCat.map((data) => {
               return (
                 // justify-content-center
