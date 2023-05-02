@@ -11,7 +11,8 @@ export default function Home() {
       let response = await fetch("http://localhost:3001/foodData", {
         method: 'POST',
         headers: {
-          'Content-Type': 'application/json'
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${localStorage.getItem('token')}` // send the token in the Authorization header
         }
       });
       response = await response.json()
@@ -21,9 +22,11 @@ export default function Home() {
       console.error(error)
     }
   }
+  
   useEffect(() => {
     loadFoodItems()
   }, [])
+  
 
   return (
     <div >
