@@ -1,105 +1,115 @@
 
-const express=require('express')
-const mongoose=require('mongoose')
-const bcrypt =require('bcrypt')
-const app=express()
-const Order = require('./models/Order')
-// const stripe = require('stripe')('YOUR_STRIPE_SECRET_KEY');
-const cors=require('cors')
-app.use(cors())
-// const jwt  =require('jwt')
-const bodyparser=require('body-parser')
-const urluncodedeParser=bodyparser.urlencoded({extended:false})
-app.use(bodyparser.json(),urluncodedeParser)
-const User=require('./models/users')
-const generateAuthToken = require('./jwToken')
-// const jwt=require('jwt')
+const { foodData, categoryData } = require('./db');
 
+// Store the data globally
+global.foodData = foodData;
+global.foodCategory = categoryData;
 
-mongoose.set('strictQuery' , true)
-mongoose.connect('mongodb://127.0.0.1:27017/sam').then(async(res)=>{
-    console.log('data base connected')
-    const foodCollection = await mongoose.connection.db.collection("food_items");
-    foodCollection.find({}).toArray(async function (err, data) {
-        const categoryCollection = await mongoose.connection.db.collection("Categories");
-        categoryCollection.find({}).toArray(async function (err, Catdata) {
-            res(err, data, Catdata);
+const express = require('express');
+const bcrypt = require('bcrypt');
+const jwt = require('jsonwebtoken');
+const nodemailer = require('nodemailer');
+const User = require('./models/users');
+const Order = require('./models/Order');
+const cors = require('cors');
+const app = express();
+const generateAuthToken = require('./jwToken');
+// Middleware
+app.use(express.json());
+app.use(express.urlencoded({ extended: false }));
+app.use(cors());
 
-        })
-    }) 
-}).catch((err)=>{
-    console.log(err,"errrr")
+// JWT secret
+const jwtSecret = "HaHa";
 
-})
+// Root route
+app.get('/', (req, res) => {
+  res.send('Hello from server');
+});
 
-app.get('/',(req,res)=>{
-    res.send('hello from server')
-})
-app.post('/register',async(req,res)=>{
-    const user=req.body
-    console.log(req.body,"dhruv")
-    const  Email=await User.findOne({email:user.email})
-    if(Email){
-        res.send('user is already register in  our dataBase')
-    } 
-    else{
-        console.log(req.body.pass,"rrr")
-            user.pass= await bcrypt.hash(req.body.pass,10)
-            console.log(req.body.pass,"rrr")
-            const dbUser=new User({
-                fName:user.fName,
-                lName:user.lName,
-                email:user.email.toLowerCase(),
-                pass:user.pass
+// User registration API
+app.post('/register', async (req, res) => {
+  const { fName, lName, email, pass } = req.body;
 
+  // Check if email is already registered
+  const existingUser = await User.findOne({ email });
+  if (existingUser) {
+    return res.send('User is already registered in our database');
+  }
 
-            })
-             await dbUser.save()
-            res.json({messge:"done"})
+  // Hash password
+  const hashedPass = await bcrypt.hash(pass, 10);
 
-    }
+  // Save user to database
+  const newUser = new User({
+    fName,
+    lName,
+    email,
+    pass: hashedPass,
+  });
 
-})
-// login api
+  try {
+    await newUser.save();
 
-app.post('/login', async(req,res)=>{
-    const userInfo=req.body
+    // Generate JWT token
+    const data = {
+      user: {
+        id: newUser.id,
+      },
+    };
+    const authToken = jwt.sign(data, jwtSecret);
+
+    res.json({ success: true, authToken });
+  } catch (err) {
+    console.log(err);
+    res.json({ error: 'Please enter a unique value.' });
+  }
+});
+
+// User login API
+app.post('/login', async (req, res) => {
+  const userInfo=req.body
     console.log(userInfo,"ppp")
-    var userData
-    try{
-         userData= await User.findOne({email:userInfo.email});
-         console.log(userData,"pass")
+    var user
+  try {
+    // Find user by email
+    user = await User.findOne({email:userInfo.email});
 
-    }
-    catch(err){
-        console.log(err,"err while matching email in database");
-        
-
+    // Check if user exists
+    if (!user) {
+      return res.status(401).json({ message: 'Invalid email or password', success: false });
     }
 
-    if(!userData){
-        return res.status(401).send({message:"Invalid Email or pass", success:false})
+    // Check password
+    const validPass = await bcrypt.compare(userInfo.pass, user.pass);
+    if (!validPass) {
+      return res.status(401).json({ message: 'Invalid email or password', success: false });
     }
-    const validPass=await bcrypt.compare(userInfo.pass,userData.pass).catch((err)=>{
-        console.log(err,"err while hashin");
-        res.status(500).send({message:"Internal server err"})
 
-    });
-    if(!validPass){
-        return res.status(401).send({message:"Invalid email pass"})
+    // Generate JWT token
+    const data = {
+      user: {
+        id: user.id,
+      },
+    };
+    const authToken = jwt.sign(data, jwtSecret);
+
+    res.json({ success: true, authToken });
+  } catch (err) {
+    console.log(err);
+    res.status(500).json({ message: 'Internal server error' });
+  }
+});
+app.post('/getuser', generateAuthToken, async (req, res) => {
+    try {
+        const userId = req.user.id;
+        const user = await User.findById(userId).select("-pass") // -password will not pick password from db.
+        res.send(user)
+    } catch (error) {
+        console.error(error.message)
+        res.send("Server Error")
+
     }
-    let userDataObject=userData.toObject()
-
-    delete userDataObject.pass
-    console.log(userData,'users')
-    const token=generateAuthToken(userData);
-    return res.status(200).send({
-        
-        data:{token:token, userData:userDataObject},
-    
-        message:"Loggged in successfully",
-        success:true,
-    })
 })
 app.post("/forgot-password", async (req, res) => {
     const { email } = req.body;
@@ -155,29 +165,18 @@ app.post("/forgot-password", async (req, res) => {
 
  
 
-  app.post('/foodData', async (req, res) => {
+ app.post('/foodData', async (req, res) => {
     try {
-        if (!req.user || !req.user.id) {
-            return res.status(401).send({ error: "Unauthorized" });
-          }
-      const userId = req.user.id;
-      const foodDataCollection = await database.collection('food_items').find({ user_id: userId }).toArray();
-      const foodData = foodDataCollection.map((data) => ({
-        ...data,
-        id: data._id.toString(),
-        category_id: data.category_id.toString()
-      }));
-      const foodCategoryCollection = await database.collection('food_categories').find().toArray();
-      const foodCategory = foodCategoryCollection.map((data) => ({
-        ...data,
-        id: data._id.toString()
-      }));
-      res.send([foodData, foodCategory])
+        // console.log( JSON.stringify(global.foodData))
+        // const userId = req.user.id;
+        // await database.listCollections({name:"food_items"}).find({});
+        res.send([global.foodData, global.foodCategory])
     } catch (error) {
         console.error(error.message)
-        res.status(500).send({ error: "Server Error" }) 
-      }
-  });
+        res.send("Server Error")
+
+    }
+})
   
   
   
