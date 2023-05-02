@@ -81,9 +81,13 @@ const SignUp =(props)=>{
               method: 'POST',
               headers: {
                 'Content-type': 'application/json'
+                
               },
               body: JSON.stringify(input)
-            }).then(() => {
+            }).then((resData) => {
+              localStorage.setItem('myInfo', JSON.stringify(resData.input));
+        localStorage.setItem('userEmail', input.email);
+        localStorage.setItem('token', resData.authToken);
               console.log('chal gya')
               navigate('/login')
             }).catch((err) => {
@@ -101,28 +105,34 @@ const SignUp =(props)=>{
             <label>First Name*:<input required id="fName" type='text' onChange={fun1} name='fName' value={input.fName} placeholder='Enter your first name'/></label>                        
             <label>Last Name: <input type='text' onChange={fun1} id="lName" name='lName' value={input.lName} placeholder='Enter your last name'/></label>
             <label>Email ID*:  <input required type='text' onChange={fun1} id="email" name='email' value={input.email} placeholder='Enter your EMAIL ID'/></label>
+            
+            
             <label> New Password*:
             <div className="input-group">
              <input required type={showPassword ? 'text' : 'password'} onChange={fun1} id="pass" name="pass" value={input.pass} placeholder="Enter your Password"/>
              <div className="input-group-append">
-              <span className="input-group-text1" type="password" onClick={togglePasswordVisibility}>
+              <span className="input-group-text" type="password" onClick={togglePasswordVisibility}>
                <FontAwesomeIcon icon={showPassword ? faEyeSlash : faEye} />
               </span>
              </div>
             </div>
            </label>
-            <label>Confirm Password*:
-            <div className="input-group"><input required type='password' onChange={fun1} id="cpass" name='cpass' value={input.cpass} placeholder='Confirm your Password'/>
-            <div className="input-group-append">
-              <span className="input-group-text1" type="password" onClick={toggleCpasswordVisibility}>
-               <FontAwesomeIcon icon={showCpassword ? faEyeSlash : faEye} />
-              </span>
-             </div>
-             </div>
-             </label>
+
+
+           <label>Confirm Password*:
+  <div className="input-group">
+    <input required type={showCpassword ? 'text' : 'password'} onChange={fun1} id="cpass" name="cpass" value={input.cpass} placeholder="Confirm your Password"/>
+    <div className="input-group-append">
+      <span className="input-group-text" type="password" onClick={toggleCpasswordVisibility}>
+        <FontAwesomeIcon icon={showCpassword ? faEyeSlash : faEye} />
+      </span>
+    </div>
+  </div>
+
             {!isPasswordMatch && (
         <div className="error-message">Passwords do not match</div>
       )}
+      </label>
              < button className='submit' type='submit'  onClick={fun2}>Submit</button>
             </form>
             <p>  Already have an account?<Link style={{color: 'black'}} to='/login'> Login here.</Link></p>
