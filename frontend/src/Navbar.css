@@ -1,0 +1,81 @@
+/* *{
+    background-color: rgba(230, 183, 241, 1);
+} */
+.navbar{
+    position: absolute;
+    width: 1286.25px;
+    height: 39px;
+    left: 105px;
+    top: 20px;
+    font-family: 'Tanker';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 30px; 
+    /* line-height: 50.8%; */
+
+    /* letter-spacing: 0.01em; */
+    text-transform: capitalize;
+
+    /* color: #000000; */
+}
+.nav ul{
+    display: flex;
+    margin-left: 1300px;
+}
+.nav-links li{
+    margin-right: 80px;
+    margin-top: -60px;
+    /* position: absolute; */
+/* width: 488.25px; */
+/* height: 30px; */
+/* left: 903px; */
+/* top: 64px; */
+}
+.nav-links{
+    list-style: none;
+}
+ul li{
+    margin: 20px;
+    padding: 0px; 
+}
+/* link{
+    text-decoration: none;
+} */
+
+/* .navbar{
+    font-family: 'Tanker';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 30px;
+    position: absolute; */
+    /* margin-top: -900px;
+    display: grid;
+    grid-template-rows: 1080px ;
+    grid-template-columns: 200px 200px 200px 200px 200px;
+}
+.logo{
+    grid-row: 1;
+    grid-column: 1 / 2;
+    
+}
+.nav-links{
+    grid-row: 1;
+    grid-column: 2 / 3;
+} */
+.cart{
+     height: 20px;
+     padding: 10px;
+     
+     
+}
+.logout{
+    display: flex;
+    height: -10px;
+    margin-top: -10px;
+    padding: 5px;
+}
+.buttons{
+    display: flex;
+    padding: 0%;
+}
+

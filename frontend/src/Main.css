@@ -1,0 +1,52 @@
+/* *{
+    overflow: hidden;
+} */
+
+body {
+  overflow-x: hidden; /* Hide horizontal scrollbar */
+  
+} 
+.Main-div{
+    background: #e6b7f1;
+    font-family: 'Tanker';
+        font-style: normal;
+        font-weight: 400;
+        font-size: 30px;
+         display: flex;
+  height: 100vh;
+  align-items: center;
+  justify-content: center;
+    }
+    
+    .content{
+        display: flex;
+        /* margin-top: 1000px;
+        grid-template-rows: 900px 900px;
+        grid-template-columns: 900px 900px; */
+    }
+    .content-left{
+        margin-top: 300px;
+        margin-left: 60px;
+    }
+    .content-left button{
+        width: 150px;
+        letter-spacing: 1px;
+        font-size: 20px;
+    }
+    .content-left h1{
+        font-weight: 400;
+    font-size: 70px;
+    line-height: 107.3%;
+    /* or 118px */
+    
+    letter-spacing: 0.15em;
+    }
+    
+    .food{
+        width: 833.39px;
+        height: 826.37px; 
+        margin-left:680px ;
+    }
+    .button{
+        background-color: black;
+    }

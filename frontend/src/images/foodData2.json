@@ -1,0 +1,151 @@
+[
+    {
+        "CategoryName":"Starter",
+        "name":"Chilli Paneer",
+        "img":"https://media.istockphoto.com/photos/spicy-paneer-or-chilli-paneer-or-paneer-tikka-or-cottage-cheese-in-picture-id697316634?b=1&k=20&m=697316634&s=170667a&w=0&h=bctfHdYTz9q2dJUnuxGRDUUwC9UBWjL_oQo5ECVVDAs=",
+        "options":[{"half":"120","full":"200"}]
+    
+    },{
+        "CategoryName":"Sweets",
+        "name":"Til Ladoo",
+        "img":"https://images.unsplash.com/photo-1610550246952-0c906d3aca7a?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8M3x8bGFkZHV8ZW58MHx8MHx8&auto=format&fit=crop&w=500&q=60",
+        "options":[{"half":"120","full":"200"}]
+    },{
+        "CategoryName":"Sweets",
+        "name":"Gulab Jamun",
+        "img":"https://media.istockphoto.com/id/1214702080/photo/indian-traditional-sweet-gulab-jamun-close-up.jpg?s=1024x1024&w=is&k=20&c=zk9SQk6AvKteuOnn9mN08C0CgWxGi3p3EJnyby5_lWY=",
+        "options":[{"half":"120","full":"200"}]
+    },{
+        "CategoryName":"Sweets",
+        "name":"Besan Ladoo",
+        "img":"https://media.istockphoto.com/id/982302046/photo/rava-ladoo-or-semolina-laddu-with-cashew-nut-topping-popular-festival-food-from-india-served.webp?s=2048x2048&w=is&k=20&c=1mQbLla15MpfbkY5H3tjbZ91QMq1ilfwNnXi16LNWsI=",
+        "options":[{"half":"120","full":"200"}],
+        "description":"Made using Indian masalas and Basmati rice. Barbequed pieces of Paneer/Chicken/Mutton were added."
+    },{
+        "CategoryName":"Starter",
+        "name":"Paneer Tikka",
+        "img":"https://media.istockphoto.com/photos/paneer-tikka-at-skewers-in-black-bowl-at-dark-slate-background-paneer-picture-id1186759790?k=20&m=1186759790&s=612x612&w=0&h=e9MlX_7cZtq9_-ORGLPNU27VNP6SvDz7s-iwTxrf7wU=",
+        "options":[{"half":"120","full":"200"}],
+        "description":"Made using Indian masalas and Basmati rice. Barbequed pieces of Paneer/Chicken/Mutton were added."
+    },{
+        "CategoryName":"Sweets",
+        "name":"Gunjiya",
+        "img":"https://media.istockphoto.com/id/174856174/photo/sweets-gujia.jpg?s=2048x2048&w=is&k=20&c=PT3EgMVAvosLUhhU9eQ5zKXXrZGPOOhmDOMQC0AQuTA=",
+        "options":[{"half":"120","full":"200"}],
+        "description":"Made using Indian masalas and Basmati rice. Barbequed pieces of Paneer/Chicken/Mutton were added."
+    },{
+        "CategoryName":"Sweets",
+        "name":"Gajar Halwa",
+        "img":"https://media.istockphoto.com/id/1208752733/photo/gajar-ka-halwa.jpg?s=2048x2048&w=is&k=20&c=K8g_eH2TPZNLf7l-U_jfCQtWSdIkiBSQd0PiL49QIqc=",
+        "options":[{"half":"120","full":"200"}],
+        "description":"Made using Indian masalas and Basmati rice. Barbequed pieces of Paneer/Chicken/Mutton were added."
+    },{
+        "CategoryName":"Sweets",
+        "name":"Gond Laddu",
+        "img":"https://media.istockphoto.com/id/1344574567/photo/gond-ke-laddoo.jpg?s=612x612&w=0&k=20&c=4LXUExwHEVvpojZ3k5GiiRmKBZK2IEn-F17Hgqv_kK8=",
+        "options":[{"half":"120","full":"200"}],
+        "description":"Made using Indian masalas and Basmati rice. Barbequed pieces of Paneer/Chicken/Mutton were added."
+    },{
+        "CategoryName":"Starter",
+        "name":"Samosa",
+        "img":"https://media.istockphoto.com/id/980106992/photo/samosa-snack-served-with-tomato-ketchup-and-mint-chutney.jpg?s=2048x2048&w=is&k=20&c=m4-8Jwi5eo2_SeFfsAOf5QK4ZlrBDBGGFHCFm8joj7I=",
+        "options":[{"half":"120","full":"200"}],
+        "description":"Made using Indian masalas and Basmati rice. Barbequed pieces of Paneer/Chicken/Mutton were added."
+    },{
+        "CategoryName":"Starter",
+        "name":"Manchurian",
+        "img":"https://media.istockphoto.com/id/1072951524/photo/indian-chilli-chicken-dry-served-in-a-plate-over-moody-background-selective-focus.jpg?s=2048x2048&w=is&k=20&c=DxoWhYjIHYt2ny1mjp9Fg686M1e9fEWq5zxGoXQVrm8=",
+        "options":[{"half":"120","full":"200"}],
+        "description":"Made using Indian masalas and Basmati rice. Barbequed pieces of Paneer/Chicken/Mutton were added."
+    },{
+        "CategoryName":"Starter",
+        "name":"Raj Kachori",
+        "img":"https://media.istockphoto.com/id/585328296/photo/raj-kachori.jpg?s=2048x2048&w=is&k=20&c=xWXGaX5C62_ypXmjYRQq5t5aIV5fFWS6TY-TIPeknvw=",
+        "options":[{"half":"120","full":"200"}],
+        "description":"Made using Indian masalas and Basmati rice. Barbequed pieces of Paneer/Chicken/Mutton were added."
+    },{
+        "CategoryName":"Starter",
+        "name":"Aloo Tikki",
+        "img":"https://media.istockphoto.com/id/1319972553/photo/aloo-tikki-or-cutlet-or-aloo-patties-dipped-in-chickpea-curry.jpg?s=2048x2048&w=is&k=20&c=a5JAAFBfGUMkpaxE4lTuVfnlZ9CZzrM-s-d9HlzIDjs=",
+        "options":[{"half":"120","full":"200"}],
+        "description":"Made using Indian masalas and Basmati rice. Barbequed pieces of Paneer/Chicken/Mutton were added."
+    },{
+        "CategoryName":"Dishes",
+        "name":"Rajma Chawal",
+        "img":"https://media.istockphoto.com/id/1451460553/photo/rajma-chawal-an-indian-food.jpg?s=2048x2048&w=is&k=20&c=5gQ9n6n7_CaUihekKd5lSjiuIhXP2HUSceOmZLVz4cg=",
+        "options":[{"half":"120","full":"200"}],
+        "description":"Made using Indian masalas and Basmati rice. Barbequed pieces of Paneer/Chicken/Mutton were added."
+    },{
+        "CategoryName":"Dishes",
+        "name":"Aloo Paratha",
+        "img":"https://media.istockphoto.com/id/1189080997/photo/aloo-paratha-with-lassi-indian-potato-stuffed-flatbread-with-butter-on-top-served-with-fresh.jpg?s=2048x2048&w=is&k=20&c=lp2cgUMxm0CJULVkm0EBuGhKqj7eCGy7N-fAn8wxPXM=",
+        "options":[{"half":"120","full":"200"}],
+        "description":"Made using Indian masalas and Basmati rice. Barbequed pieces of Paneer/Chicken/Mutton were added."
+    },{
+        "CategoryName":"Dishes",
+        "name":"Chole Bhature",
+        "img":"https://media.istockphoto.com/id/1292633282/photo/chole-bhature-spicy-chick-peas-curry-also-known-as-chole-or-channa-masala-is-traditional.jpg?s=2048x2048&w=is&k=20&c=QuMaEpQhxldR9AgppnJvJVeL_I6ui5z33yVX5Swzf2E=",
+        "options":[{"half":"120","full":"200"}],
+        "description":"Made using Indian masalas and Basmati rice. Barbequed pieces of Paneer/Chicken/Mutton were added."
+    },{
+        "CategoryName":"Dishes",
+        "name":"Pav Bhaji",
+        "img":"https://media.istockphoto.com/id/1438867572/photo/pav-bhaji-is-a-fast-food-dish-from-india-consisting-of-a-thick-vegetable-curry-served-with.jpg?s=2048x2048&w=is&k=20&c=JXfwxdu6oqAG3Dh-IKtpCp-AiBYw75f5zofvm_QY978=",
+        "options":[{"half":"120","full":"200"}],
+        "description":"Made using Indian masalas and Basmati rice. Barbequed pieces of Paneer/Chicken/Mutton were added."
+    },{
+        "CategoryName":"Dishes",
+        "name":"Matar Paneer",
+        "img":"https://media.istockphoto.com/id/1325272109/photo/green-peas-or-matar-paneer-curry.jpg?s=2048x2048&w=is&k=20&c=nWW9PLNeHiuZZUTv_CKo9RZh_7Vo-Oc1jXPGuSS2Dm8=",
+        "options":[{"half":"120","full":"200"}],
+        "description":"Made using Indian masalas and Basmati rice. Barbequed pieces of Paneer/Chicken/Mutton were added."
+    },{
+        "CategoryName":"Dishes",
+        "name":"Dal Makhani",
+        "img":"https://media.istockphoto.com/id/1437065088/photo/spicy-dal-makhani-or-butter-daal-served-in-a-dish-isolated-on-grey-background-top-view-of.jpg?s=2048x2048&w=is&k=20&c=7VVwMgtS1jmsHkVVteje1fjLVGAICy7LbCXnUy2yn0c=",
+        "options":[{"half":"120","full":"200"}],
+        "description":"Made using Indian masalas and Basmati rice. Barbequed pieces of Paneer/Chicken/Mutton were added."
+    },{
+        "CategoryName":"Drinks",
+        "name":"Besan Ladoo",
+        "img":"",
+        "options":[{"half":"120","full":"200"}],
+        "description":"Made using Indian masalas and Basmati rice. Barbequed pieces of Paneer/Chicken/Mutton were added."
+    },{
+        "CategoryName":"Drinks",
+        "name":"Mithi Lassi",
+        "img":"https://media.istockphoto.com/id/1198579872/photo/a-tall-glass-of-lassi-an-indian-refreshing-drink-made-with-yogurt-and-sugar.jpg?s=2048x2048&w=is&k=20&c=K3GL41ESBPmgSzRnoTHB8soPxv4eYabPpLT-y1grDBg=",
+        "options":[{"half":"120","full":"200"}],
+        "description":"Made using Indian masalas and Basmati rice. Barbequed pieces of Paneer/Chicken/Mutton were added."
+    },{
+        "CategoryName":"Drinks",
+        "name":"Chaas",
+        "img":"https://media.istockphoto.com/id/519583690/photo/indian-sweet-lassi-served-in-a-big-steel-glass.jpg?s=2048x2048&w=is&k=20&c=QXLBHKfxaY910f9CLL_I6KrMFB276W4O0bgPY1opmYM=",
+        "options":[{"half":"120","full":"200"}],
+        "description":"Made using Indian masalas and Basmati rice. Barbequed pieces of Paneer/Chicken/Mutton were added."
+    },{
+        "CategoryName":"Drinks",
+        "name":"Mango Juice",
+        "img":"https://media.istockphoto.com/id/1165087544/photo/mango-smoothies.jpg?s=2048x2048&w=is&k=20&c=gz03f1k1rKM38jDzq2hH9B0r8L17cxoC56WLYLPUSrM=",
+        "options":[{"half":"120","full":"200"}],
+        "description":"Made using Indian masalas and Basmati rice. Barbequed pieces of Paneer/Chicken/Mutton were added."
+    },{
+        "CategoryName":"Drinks",
+        "name":"Nimbu Pani",
+        "img":"https://media.istockphoto.com/id/1141250480/photo/shikanji-nimbu-pani-is-a-popular-cold-drink-from-india.jpg?s=2048x2048&w=is&k=20&c=ut0ZBZFP1Z_D_UtJRLtSJErpD8Ozuq8kCCT4oLfhNy8=",
+        "options":[{"half":"120","full":"200"}],
+        "description":"Made using Indian masalas and Basmati rice. Barbequed pieces of Paneer/Chicken/Mutton were added."
+    },{
+        "CategoryName":"Drinks",
+        "name":"Cold Coffee",
+        "img":"https://media.istockphoto.com/id/483831034/photo/mocha.jpg?s=2048x2048&w=is&k=20&c=fKucCJYXxRAf5Vx0L4SDCNtK1lL6HxHKPJiVTjYUTBI=",
+        "options":[{"half":"120","full":"200"}],
+        "description":"Made using Indian masalas and Basmati rice. Barbequed pieces of Paneer/Chicken/Mutton were added."
+    },{
+        "CategoryName":"Drinks",
+        "name":"Oreo Shake",
+        "img":"https://media.istockphoto.com/id/683194578/photo/vanilla-milkshake-with-chocolate-cookies-and-black-straw.jpg?s=2048x2048&w=is&k=20&c=1dyJNbiaEt0WJSUjhapP0h8jU8j6s-CarxROieRMAIA=",
+        "options":[{"half":"120","full":"200"}],
+        "description":"Made using Indian masalas and Basmati rice. Barbequed pieces of Paneer/Chicken/Mutton were added."
+    }
+]
