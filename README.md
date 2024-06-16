@@ -10,7 +10,7 @@ RRK is a food ordering website.
 ----------------------------------------FRONTEND---------------------------------------------
 cd frontend
 npm i
-
+npm start
 
 
 
@@ -21,3 +21,4 @@ npm i
 --------------------------------------BACKEND--------------------------------------------
 cd server
 npm i
+node index.js
